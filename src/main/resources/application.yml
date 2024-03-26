@@ -1,0 +1,25 @@
+server:
+   compression:
+      enabled: true
+   port: 8086
+   servlet:
+      context-path: /demo-rest-template
+spring:
+   application:
+      name: demo-rest-template
+management:
+  tracing:
+    sampling:
+      probability: 1.0 # para enviar 100% das amostras
+  zipkin:
+    tracing:
+      #endpoint: http://zipkin.zipkin-dev.svc:9411/api/v2/spans # alterar o endereço do Zipkin
+      endpoint: http://localhost:9411/api/v2/spans # alterar o endereço do Zipkin
+jira:
+  baseUrl: <URL>
+  username: <USERNAME>
+  apiToken: <TOKEN>
+
+logging:
+  pattern:
+    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
